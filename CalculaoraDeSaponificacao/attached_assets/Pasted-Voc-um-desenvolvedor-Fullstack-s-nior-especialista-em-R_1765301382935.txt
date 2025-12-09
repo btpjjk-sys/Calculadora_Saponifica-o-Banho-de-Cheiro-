@@ -1,0 +1,306 @@
+Você é um desenvolvedor Fullstack sênior especialista em React, TypeScript e UI/UX.
+
+Eu tenho uma lógica de negócios pronta para uma "Calculadora de Saponificação" (produção de sabão artesanal). Preciso que você crie uma interface gráfica (Frontend) moderna, responsiva e funcional para interagir com esse código.
+
+### Stack Tecnológica:
+- React (Vite)
+- TypeScript
+- Tailwind CSS (para estilização)
+- Lucide React (para ícones)
+
+### O Código da Lógica (Backend/Core):
+Por favor, incorpore o seguinte código TypeScript no projeto (pode criar um arquivo `utils/soapLogic.ts` ou similar). Não altere a lógica matemática, apenas use-a:
+
+/* 1. Classe para os Atributos do Sabonete */
+class AtributosSabonete {
+    hidratacao: number;
+    limpeza: number;
+    bolha: number;
+    persistencia: number;
+    dureza: number;
+    solubilidade: number;
+    secagem: number;
+
+
+    constructor(hidratacao: number, limpeza: number, bolha: number, persistencia: number, dureza: number, solubilidade: number, secagem: number) {
+        this.hidratacao = hidratacao;
+        this.limpeza = limpeza;
+        this.bolha = bolha;
+        this.persistencia = persistencia;
+        this.dureza = dureza;
+        this.solubilidade = solubilidade;
+        this.secagem = secagem;
+    }
+}
+
+
+/* 2. Classe para o Óleo */
+class Oleo {
+    Nome: string;
+    Indice_saponificaoNaOH: number;
+    Indice_saponificaoKOH: number;
+    Peso_gramas: number;
+    Valores_Atributos: AtributosSabonete; // Uma propriedade que é uma instância da classe AtributosSabonete
+
+
+    constructor(Nome: string,Indice_saponificaoNaOH: number,Indice_saponificaoKOH: number,Valores_Atributos: AtributosSabonete, Peso_gramas: number = 0) {
+        this.Nome = Nome;
+        this.Indice_saponificaoNaOH = Indice_saponificaoNaOH;
+        this.Indice_saponificaoKOH = Indice_saponificaoKOH;
+        this.Valores_Atributos = Valores_Atributos;
+        this.Peso_gramas = Peso_gramas;
+    }
+}
+
+
+
+
+
+
+/*3. Função de classificação óleo, vendo se ela está na concentração ideal*/
+function Cor_Oleo_Atributo(valor : number): string {
+/* Intevalo minimo e maximo para indicar se um atributo esta ausente ou em excesso */
+/*
+0 - 4 (muito baixo) - vermelho
+5 - 9 (baixo/quase ideal) - amarelo
+10 (ideal) - verde
+11 - 15 (alto/quase ideal) - amarelo
+16 - 20 (muito alto) - vermelho
+*/
+
+
+const ideal : number = 10;
+const baixo : number = 5;
+const alto : number = 15;
+const min : number = 0;
+const max : number = 20;
+
+
+/* Tratamento de Erro para valores fora desse atributo */
+if (valor < min || valor > max) {
+throw new Error (`Valor do atributo '${valor}' está fora do intervalo de 0 a 20.\n`);
+}
+
+
+/* Lógica para definir cor */
+if (valor == ideal) {
+    return "verde";
+}
+
+
+else if (valor >= baixo && valor <= alto) {
+    return "amarelo";
+}
+
+
+else {
+    return "vermelho";
+}
+}
+
+
+
+
+
+
+
+
+/* 4.Funcao auxiliar de concentracao do NaOH e KOH (recebe como paramentros o Oleo em questão, o tipo de Base e a concentracao), que vai ser usada pela funcao de calcular a base*/
+function Ajuste_Indice_Saponificacao(oleo : Oleo, Base : "NaOH" | "KOH", concentracao : number) : number {
+let Indice_Saponificao = 0;
+
+
+if (concentracao <= 0 || concentracao > 100){
+    throw new Error("A concentração está fora do intervalo");
+}
+
+
+if (Base == "NaOH"){
+    Indice_Saponificao = oleo.Indice_saponificaoNaOH / (concentracao/100);
+}
+else if (Base == "KOH"){
+    Indice_Saponificao = oleo.Indice_saponificaoKOH / (concentracao/100);
+}
+    return Indice_Saponificao;
+}
+
+
+
+
+
+
+/*5. Calcula quantidade de base (recebe o paramentro oleo, tipo da base e sobregordura) */
+function Calcula_Base (Oleo_Selecionado : Oleo[], Base : "NaOH" | "KOH", sobregordura : number, concentracao : number ): number {
+let quantidade_base = 0;
+let quantidade_base_sobregordura : number;
+
+
+/* Percorre o array de oleos  */
+ for (const oleo of Oleo_Selecionado){
+    if (oleo.Peso_gramas <= 0){
+        throw new Error (`Peso do óleo '${oleo.Nome}' deve ser >= 0`);
+    }    
+    let Indice_Saponificao : number;
+/* Selecionando a base */
+    if (Base == "NaOH"){
+        Indice_Saponificao = Ajuste_Indice_Saponificacao (oleo, "NaOH", concentracao);
+    }
+    else { //Ou seja é KOH
+        Indice_Saponificao = Ajuste_Indice_Saponificacao (oleo, "KOH", concentracao);
+
+
+    }
+/* Calculando peso da base em gramas */
+    quantidade_base += (Indice_Saponificao * oleo.Peso_gramas)/1000;
+
+
+
+
+}
+
+
+
+
+/* Calculando com Sobregordura, ex: se for 5% de sobregordura, entao vamos usar 100% - 5% = 95% de gordura sofrerá a saponificação e se for 0% o valor da quantidade_base não altera*/
+    quantidade_base_sobregordura = quantidade_base * (1 - (sobregordura/100))
+    return quantidade_base_sobregordura;
+}
+
+
+
+
+
+
+/*6. Calcula quantidade de água (que recebe a quantidade de base em gramas e a proporcao de agua em relação a base*/
+function Calcula_Agua (quantidade_base : number, proporcao_agua : number) : number {
+    let quantidade_agua = 0;
+    if (quantidade_base <= 0){
+        throw new Error ("Quantidade de base deve ser deve ser maior que 0");
+    }
+
+
+    if (proporcao_agua <= 0){
+        throw new Error ("Quantidade de agua deve ser deve ser maior que 0");
+    }
+
+
+    quantidade_agua = quantidade_base * proporcao_agua;
+    return quantidade_agua;
+}
+
+
+/*7.Calcula Atributos Finais do Sabonete */
+function Calcula_Atributos_Sabonete_Final(oleos_selecionados: Oleo[]): AtributosSabonete {
+    let atributos_finais = new AtributosSabonete(0, 0, 0, 0, 0, 0, 0);
+
+
+    let peso_total_oleos = 0;
+    for (const oleo of oleos_selecionados) {
+        peso_total_oleos += oleo.Peso_gramas;
+    }
+
+
+    if (peso_total_oleos <= 0) {
+        throw new Error("O peso total dos óleos deve ser maior que zero para calcular os atributos.");
+    }
+
+
+    for (const oleo of oleos_selecionados) {
+        const peso_relativo = oleo.Peso_gramas / peso_total_oleos;
+        atributos_finais.hidratacao += oleo.Valores_Atributos.hidratacao * peso_relativo;
+        atributos_finais.limpeza += oleo.Valores_Atributos.limpeza * peso_relativo;
+        atributos_finais.bolha += oleo.Valores_Atributos.bolha * peso_relativo;
+        atributos_finais.persistencia += oleo.Valores_Atributos.persistencia * peso_relativo;
+        atributos_finais.dureza += oleo.Valores_Atributos.dureza * peso_relativo;
+        atributos_finais.solubilidade += oleo.Valores_Atributos.solubilidade * peso_relativo;
+        atributos_finais.secagem += oleo.Valores_Atributos.secagem * peso_relativo;
+    }
+
+
+    return atributos_finais;
+}
+
+
+/*8.Funcao Main */
+/* Define a estrutura de dados para o objeto de resultado final */
+interface ResultadosCalculadora {
+    quantidade_base: number;
+    quantidade_agua: number;
+    atributos_finais: AtributosSabonete;
+}
+
+
+/*
+  Função principal que gera a receita de saponificação completa, que tem como parâmentro:
+  -oleos_selecionados - Array de óleos da receita com seus pesos.
+  -tipo_base - "NaOH" ou "KOH".
+  -sobregordura - Percentual de sobregordura (0 a 100).
+  -pureza_base - Percentual de pureza da base (0 a 100).
+  -proporcao_agua - Proporção de água em relação à quantidade de base.
+
+
+  retorna um object com esses parametros
+*/
+
+
+function Gerar_Receita_Saponificacao(oleos_selecionados: Oleo[],tipo_base: "NaOH" | "KOH",sobregordura: number,pureza_base: number,proporcao_agua: number): ResultadosCalculadora {
+    /* Calcula a quantidade de base, já ajustando pela pureza */
+    const quantidade_base = Calcula_Base(oleos_selecionados, tipo_base, sobregordura, pureza_base);
+
+
+    /* Calcula a quantidade de água */
+    const quantidade_agua = Calcula_Agua(quantidade_base, proporcao_agua);
+
+
+    /* Calcula os atributos finais do sabonete */
+    const atributos_finais = Calcula_Atributos_Sabonete_Final(oleos_selecionados);
+
+
+    return {
+        quantidade_base,
+        quantidade_agua,
+        atributos_finais
+    }
+}
+
+
+
+
+### Requisitos da Interface (Frontend):
+
+1. **Banco de Dados Mockado (Essencial):**
+   - Como o código fornece a classe `Oleo` mas não os dados, crie uma lista constante (`const OILS_DATA`) com pelo menos 5 óleos reais comuns (Ex: Azeite de Oliva, Óleo de Coco, Óleo de Palma, Óleo de Rícino, Manteiga de Karité) preenchendo os atributos de `AtributosSabonete` e os índices de saponificação com valores reais aproximados para que eu possa testar a calculadora.
+
+2. **Componente de Seleção de Óleos:**
+   - Um formulário onde eu possa selecionar um óleo de uma lista (dropdown).
+   - Um campo para inserir o peso em gramas.
+   - Um botão "Adicionar Óleo".
+   - Uma lista visual abaixo mostrando os óleos já adicionados, com opção de remover ou editar o peso.
+
+3. **Configurações da Receita:**
+   - Inputs para definir:
+     - Tipo de Base (Radio button: NaOH ou KOH).
+     - Sobregordura (Input % - padrão 5%).
+     - Concentração/Pureza da Base (Input % - padrão 99%).
+     - Proporção de Água (Input decimal - padrão 0.3 ou 30%).
+
+4. **Painel de Resultados (Dashboard):**
+   - Botão de destaque "Calcular Receita".
+   - Cards mostrando claramente:
+     - Quantidade de Base necessária (g).
+     - Quantidade de Água sugerida (g).
+     - Peso total da massa.
+
+5. **Visualização dos Atributos (A parte mais importante):**
+   - Exiba os atributos finais do sabonete (Dureza, Limpeza, etc.) retornados pela função.
+   - **Regra de Cor:** Utilize estritamente a lógica da sua função `Cor_Oleo_Atributo` para colorir as barras de progresso ou badges dos atributos:
+     - Verde: Ideal (valor 10).
+     - Amarelo: Aceitável (5-9 ou 11-15).
+     - Vermelho: Fora do ideal (0-4 ou 16-20).
+
+### Estilo Visual:
+- Use um design limpo, "clean" e científico, mas amigável.
+- Use componentes arredondados e sombras suaves.
+- Garanta que funcione bem no celular.
+
+Por favor, configure o projeto e monte a tela principal.
