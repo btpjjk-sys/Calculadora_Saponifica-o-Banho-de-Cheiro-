@@ -15,7 +15,7 @@ Uma aplicação web moderna e responsiva desenvolvida para saboeiros artesanais.
 - [Pré-requisitos](#pré-requisitos)
 - [Instalação e Execução](#instalação-e-execução)
 - [Como Compilar (Build)](#como-compilar-build)
-- [Lógica de Negócio](#lógica-da-calculadora)
+- [Lógica da Calculadora](#lógica-da-calculadora)
 
 ---
 
@@ -153,7 +153,7 @@ Para gerar a versao de produção otimizada:
     npm start
     ```
 
-##lógica-da-calculadora
+## Lógica da Calculadora
 
 A lógica principal encontra-se em `client/src/lib/soapLogic.ts`. O sistema utiliza programação orientada a objetos para garantir integridade nos cálculos:
 
