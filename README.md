@@ -1,10 +1,3 @@
-Você tem toda razão\! Aquelas "imagens" no início eram, na verdade, **badges dinâmicos** (do serviço *Shields.io*) que carregam automaticamente da internet para mostrar o status do projeto. Como eles usam a sintaxe de imagem do Markdown (`![nome](url)`), pode parecer que são arquivos locais que estão faltando.
-
-Mas concordo que em texto fica mais limpo e direto, além de não depender de carregamento externo.
-
-Aqui está o **README.md** ajustado, substituindo os badges por informações em texto simples:
-
-````markdown
 # Calculadora de Saponificacao
 
 **Status:** Em Desenvolvimento (Frontend Funcional)
