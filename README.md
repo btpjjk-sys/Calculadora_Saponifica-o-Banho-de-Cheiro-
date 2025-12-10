@@ -1,13 +1,17 @@
+Você tem toda razão\! Aquelas "imagens" no início eram, na verdade, **badges dinâmicos** (do serviço *Shields.io*) que carregam automaticamente da internet para mostrar o status do projeto. Como eles usam a sintaxe de imagem do Markdown (`![nome](url)`), pode parecer que são arquivos locais que estão faltando.
+
+Mas concordo que em texto fica mais limpo e direto, além de não depender de carregamento externo.
+
+Aqui está o **README.md** ajustado, substituindo os badges por informações em texto simples:
+
 ````markdown
 # Calculadora de Saponificacao
 
-![Status do Projeto](https://img.shields.io/badge/status-ativo-success)
-![Licença](https://img.shields.io/badge/license-MIT-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+**Status:** Em Desenvolvimento (Frontend Funcional)
+**Licenca:** MIT
+**Tecnologias:** TypeScript, React, Tailwind CSS
 
-Uma aplicação web moderna e responsiva desenvolvida para saboeiros artesanais. Esta ferramenta permite criar, configurar e validar receitas de sabão com precisão científica, calculando as quantidades exatas de base (NaOH ou KOH) e água, além de prever as propriedades finais do sabonete (dureza, limpeza, hidratação, etc.).
+Uma aplicacao web moderna e responsiva desenvolvida para saboeiros artesanais. Esta ferramenta permite criar, configurar e validar receitas de sabao com precisao cientifica, calculando as quantidades exatas de base (NaOH ou KOH) e agua, alem de prever as propriedades finais do sabonete (dureza, limpeza, hidratacao, etc.).
 
 ## Indice
 
@@ -25,13 +29,13 @@ Uma aplicação web moderna e responsiva desenvolvida para saboeiros artesanais.
 
 ## Sobre o Projeto
 
-A **Calculadora de Saponificacao** visa simplificar a química por trás da saboaria artesanal. Diferente de calculadoras simples, este projeto foca na experiência do usuário (UX) e na visualização clara dos dados. O sistema utiliza uma base de dados de óleos com índices de saponificação reais para garantir a segurança e qualidade do produto final.
+A **Calculadora de Saponificacao** visa simplificar a quimica por tras da saboaria artesanal. Diferente de calculadoras simples, este projeto foca na experiencia do usuario (UX) e na visualizacao clara dos dados. O sistema utiliza uma base de dados de oleos com indices de saponificacao reais para garantir a seguranca e qualidade do produto final.
 
 ---
 
 ## Status de Desenvolvimento e Roadmap
 
-Atualmente, a aplicação funciona perfeitamente como uma ferramenta de cálculo no lado do cliente (Client-Side), mas a infraestrutura de backend está preparada para expansão.
+Atualmente, a aplicacao funciona perfeitamente como uma ferramenta de calculo no lado do cliente (Client-Side), mas a infraestrutura de backend esta preparada para expansao.
 
 ### O que esta pronto:
 - **Logica de Calculo:** Implementada e funcional no Frontend (`soapLogic.ts`).
@@ -40,23 +44,23 @@ Atualmente, a aplicação funciona perfeitamente como uma ferramenta de cálculo
 - **ORM Setup:** Drizzle ORM e Schemas definidos para PostgreSQL.
 
 ### O que falta implementar (Roadmap):
-- **Persistencia de Dados:** O sistema atual utiliza armazenamento em memória (`MemStorage`). O próximo passo é conectar ao PostgreSQL para salvar usuários e receitas permanentemente.
-- **Autenticacao:** Implementar rotas de login/registro no servidor para permitir que saboeiros salvem seus históricos.
+- **Persistencia de Dados:** O sistema atual utiliza armazenamento em memoria (`MemStorage`). O proximo passo e conectar ao PostgreSQL para salvar usuarios e receitas permanentemente.
+- **Autenticacao:** Implementar rotas de login/registro no servidor para permitir que saboeiros salvem seus historicos (esqueleto em `routes.ts`).
 - **API de Receitas:** Criar endpoints REST para salvar e listar as receitas criadas.
 
 ---
 
 ## Funcionalidades
 
-- **Selecao de Oleos:** Banco de dados integrado com óleos comuns (Azeite, Coco, Palma, Rícino, etc.).
+- **Selecao de Oleos:** Banco de dados integrado com oleos comuns (Azeite, Coco, Palma, Ricino, etc.).
 - **Configuracao da Receita:**
-  - Escolha entre bases NaOH (Soda Cáustica) ou KOH (Potassa).
+  - Escolha entre bases NaOH (Soda Caustica) ou KOH (Potassa).
   - Ajuste de Sobregordura (Superfat).
-  - Definição da Pureza da Base.
-  - Controle da Proporção de Água.
-- **Dashboard de Resultados:** Cálculo instantâneo do peso total da massa, quantidade de base e água.
-- **Analise de Atributos:** Visualização gráfica das propriedades do sabão (Dureza, Limpeza, Hidratação, Espuma, Persistência, Solubilidade e Secagem).
-- **Indicadores Visuais de Qualidade:** Cores automáticas (Verde/Amarelo/Vermelho) indicando se os atributos estão dentro das faixas ideais.
+  - Definicao da Pureza da Base.
+  - Controle da Proporcao de Agua.
+- **Dashboard de Resultados:** Calculo instantaneo do peso total da massa, quantidade de base e agua.
+- **Analise de Atributos:** Visualizacao grafica das propriedades do sabao (Dureza, Limpeza, Hidratacao, Espuma, Persistencia, Solubilidade e Secagem).
+- **Indicadores Visuais de Qualidade:** Cores automaticas (Verde/Amarelo/Vermelho) indicando se os atributos estao dentro das faixas ideais.
 - **Interface Responsiva:** Design otimizado tanto para Desktop quanto para Mobile.
 
 ## Tecnologias Utilizadas
@@ -107,9 +111,9 @@ O projeto segue uma estrutura moderna de monorepo simplificado, onde frontend e 
 
 ## Pre-requisitos
 
-Antes de começar, certifique-se de ter instalado em sua máquina:
+Antes de comecar, certifique-se de ter instalado em sua maquina:
 
-  - Node.js (Versão 18 ou superior recomendada)
+  - Node.js (Versao 18 ou superior recomendada)
   - NPM ou Yarn
 
 ## Instalacao e Execucao
@@ -128,7 +132,7 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
     ```
 
 3.  **Configure as variaveis de ambiente:**
-    Se necessário, configure o `DATABASE_URL` para o PostgreSQL no arquivo `.env` ou nas variáveis do sistema (para execução local simples, o storage em memória pode ser usado dependendo da configuração do `storage.ts`).
+    Se necessario, configure o `DATABASE_URL` para o PostgreSQL no arquivo `.env` ou nas variaveis do sistema (para execucao local simples, o storage em memoria pode ser usado dependendo da configuracao do `storage.ts`).
 
 4.  **Execute em modo de desenvolvimento:**
     Este comando inicia tanto o servidor backend quanto o frontend via Vite.
@@ -137,11 +141,11 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
     npm run dev
     ```
 
-    Acesse a aplicação em: `http://localhost:5000`
+    Acesse a aplicacao em: `http://localhost:5000`
 
 ## Como Compilar (Build)
 
-Para gerar a versão de produção otimizada:
+Para gerar a versao de producao otimizada:
 
 1.  Execute o script de build:
 
@@ -149,9 +153,9 @@ Para gerar a versão de produção otimizada:
     npm run build
     ```
 
-    *Isso irá transpilar o backend e gerar o bundle estático do frontend na pasta `dist/`.*
+    *Isso ira transpilar o backend e gerar o bundle estatico do frontend na pasta `dist/`.*
 
-2.  Para iniciar a versão de produção:
+2.  Para iniciar a versao de producao:
 
     ```bash
     npm start
@@ -159,15 +163,15 @@ Para gerar a versão de produção otimizada:
 
 ## Logica de Negocio
 
-A lógica principal encontra-se em `client/src/lib/soapLogic.ts`. O sistema utiliza programação orientada a objetos para garantir integridade nos cálculos:
+A logica principal encontra-se em `client/src/lib/soapLogic.ts`. O sistema utiliza programacao orientada a objetos para garantir integridade nos calculos:
 
-  - **Classe Oleo:** Armazena os índices de saponificação (SAP) para NaOH e KOH e os atributos intrínsecos do óleo.
-  - **Classe AtributosSabonete:** Define as 7 qualidades do sabão.
-  - **Calculo Ponderado:** O sistema calcula a média ponderada dos atributos baseada na porcentagem de cada óleo na receita total.
+  - **Classe Oleo:** Armazena os indices de saponificacao (SAP) para NaOH e KOH e os atributos intrinsecos do oleo.
+  - **Classe AtributosSabonete:** Define as 7 qualidades do sabao.
+  - **Calculo Ponderado:** O sistema calcula a media ponderada dos atributos baseada na porcentagem de cada oleo na receita total.
   - **Algoritmo de Cor (Cor\_Oleo\_Atributo):**
       - **Verde (10):** Valor Ideal.
-      - **Amarelo (5-9 ou 11-15):** Aceitável.
-      - **Vermelho (\<5 ou \>15):** Fora do ideal/atenção necessária.
+      - **Amarelo (5-9 ou 11-15):** Aceitavel.
+      - **Vermelho (\<5 ou \>15):** Fora do ideal/atencao necessaria.
 
 <!-- end list -->
 
