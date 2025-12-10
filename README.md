@@ -1,59 +1,58 @@
-# Calculadora de Saponificacao
+# Calculadora de Saponificação
 
 **Status:** Em Desenvolvimento (Frontend Funcional)
-**Licenca:** MIT
 **Tecnologias:** TypeScript, React, Tailwind CSS
 
-Uma aplicacao web moderna e responsiva desenvolvida para saboeiros artesanais. Esta ferramenta permite criar, configurar e validar receitas de sabao com precisao cientifica, calculando as quantidades exatas de base (NaOH ou KOH) e agua, alem de prever as propriedades finais do sabonete (dureza, limpeza, hidratacao, etc.).
+Uma aplicação web moderna e responsiva desenvolvida para saboeiros artesanais. Esta ferramenta permite criar, configurar e validar receitas de sabão com precisão científica, calculando as quantidades exatas de base (NaOH ou KOH) e água, além de prever as propriedades finais do sabonete (dureza, limpeza, hidratação, etc.).
 
-## Indice
+## Índice
 
 - [Sobre o Projeto](#sobre-o-projeto)
 - [Status de Desenvolvimento e Roadmap](#status-de-desenvolvimento-e-roadmap)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Arquitetura e Estrutura](#arquitetura-e-estrutura)
-- [Pre-requisitos](#pre-requisitos)
-- [Instalacao e Execucao](#instalacao-e-execucao)
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação e Execução](#instalação-e-execução)
 - [Como Compilar (Build)](#como-compilar-build)
-- [Logica de Negocio](#logica-de-negocio)
+- [Lógica de Negócio](#lógica-da-calculadora)
 
 ---
 
 ## Sobre o Projeto
 
-A **Calculadora de Saponificacao** visa simplificar a quimica por tras da saboaria artesanal. Diferente de calculadoras simples, este projeto foca na experiencia do usuario (UX) e na visualizacao clara dos dados. O sistema utiliza uma base de dados de oleos com indices de saponificacao reais para garantir a seguranca e qualidade do produto final.
+A **Calculadora de Saponificação** visa simplificar a química por trás da saboaria artesanal. Diferente de calculadoras simples, este projeto foca na experiência do usuário (UX) e na visualização clara dos dados. O sistema utiliza uma base de dados de óleos com índices de saponificação reais para garantir a segurança e qualidade do produto final.
 
 ---
 
 ## Status de Desenvolvimento e Roadmap
 
-Atualmente, a aplicacao funciona perfeitamente como uma ferramenta de calculo no lado do cliente (Client-Side), mas a infraestrutura de backend esta preparada para expansao.
+Atualmente, a aplicação funciona perfeitamente como uma ferramenta de cálculo no lado do cliente (Client-Side), mas a infraestrutura de backend está preparada para expansão.
 
-### O que esta pronto:
-- **Logica de Calculo:** Implementada e funcional no Frontend (`soapLogic.ts`).
+### O que está pronto:
+- **Lógica de Cálculo:** Implementada e funcional no Frontend (`soapLogic.ts`).
 - **Interface (UI):** Completa, responsiva e com feedback visual de atributos.
 - **Estrutura Backend:** Servidor Express configurado com TypeScript.
 - **ORM Setup:** Drizzle ORM e Schemas definidos para PostgreSQL.
 
-### O que falta implementar (Roadmap):
-- **Persistencia de Dados:** O sistema atual utiliza armazenamento em memoria (`MemStorage`). O proximo passo e conectar ao PostgreSQL para salvar usuarios e receitas permanentemente.
-- **Autenticacao:** Implementar rotas de login/registro no servidor para permitir que saboeiros salvem seus historicos (esqueleto em `routes.ts`).
+### O que falta implementar:
+- **Persistência de Dados:** O sistema atual utiliza armazenamento em memória (`MemStorage`). O próximo passo é conectar ao PostgreSQL para salvar usuários e receitas permanentemente.
+- **Autenticação:** Implementar rotas de login/registro no servidor para permitir que saboeiros salvem seus históricos (esqueleto em `routes.ts`).
 - **API de Receitas:** Criar endpoints REST para salvar e listar as receitas criadas.
 
 ---
 
 ## Funcionalidades
 
-- **Selecao de Oleos:** Banco de dados integrado com oleos comuns (Azeite, Coco, Palma, Ricino, etc.).
-- **Configuracao da Receita:**
-  - Escolha entre bases NaOH (Soda Caustica) ou KOH (Potassa).
-  - Ajuste de Sobregordura (Superfat).
-  - Definicao da Pureza da Base.
-  - Controle da Proporcao de Agua.
-- **Dashboard de Resultados:** Calculo instantaneo do peso total da massa, quantidade de base e agua.
-- **Analise de Atributos:** Visualizacao grafica das propriedades do sabao (Dureza, Limpeza, Hidratacao, Espuma, Persistencia, Solubilidade e Secagem).
-- **Indicadores Visuais de Qualidade:** Cores automaticas (Verde/Amarelo/Vermelho) indicando se os atributos estao dentro das faixas ideais.
+- **Seleção de Óleos:** Banco de dados integrado com óleos comuns (Azeite, Coco, Palma, Ricino, etc.).
+- **Configuração da Receita:**
+  - Escolha entre bases NaOH (Soda Cáustica) ou KOH (Potassa).
+  - Ajuste de Sobre Gordura (Superfat).
+  - Definição da Pureza da Base.
+  - Controle da Proporção de Água.
+- **Dashboard de Resultados:** Cálculo instantâneo do peso total da massa, quantidade de base e água.
+- **Análise de Atributos:** Visualização gráfica das propriedades do sabão (Dureza, Limpeza, Hidratação, Espuma, Persistente, Solubilidade e Secagem).
+- **Indicadores Visuais de Qualidade:** Cores automáticas (Verde/Amarelo/Vermelho) indicando se os atributos estão dentro das faixas ideais.
 - **Interface Responsiva:** Design otimizado tanto para Desktop quanto para Mobile.
 
 ## Tecnologias Utilizadas
@@ -62,9 +61,9 @@ Atualmente, a aplicacao funciona perfeitamente como uma ferramenta de calculo no
 - **Framework:** React 18
 - **Build Tool:** Vite
 - **Linguagem:** TypeScript
-- **Estilizacao:** Tailwind CSS
+- **Estilização:** Tailwind CSS
 - **Componentes UI:** shadcn/ui (baseado em Radix UI)
-- **Icones:** Lucide React
+- **Ícones:** Lucide React
 - **Gerenciamento de Estado/Data:** TanStack Query
 - **Roteamento:** Wouter
 
@@ -72,7 +71,7 @@ Atualmente, a aplicacao funciona perfeitamente como uma ferramenta de calculo no
 - **Runtime:** Node.js
 - **Framework:** Express.js
 - **Banco de Dados (ORM):** Drizzle ORM (PostgreSQL)
-- **Validacao:** Zod
+- **Validação:** Zod
 
 ---
 
@@ -81,51 +80,51 @@ Atualmente, a aplicacao funciona perfeitamente como uma ferramenta de calculo no
 O projeto segue uma estrutura moderna de monorepo simplificado, onde frontend e backend coabitam, mas com responsabilidades separadas.
 
 ```bash
-├── client/                 # Aplicacao Frontend (React)
+├── client/                 # Aplicação Frontend (React)
 │   ├── src/
-│   │   ├── components/     # Componentes Reutilizaveis (UI, Dashboards)
+│   │   ├── components/     # Componentes Reutilizáveis (UI, Dashboards)
 │   │   ├── hooks/          # Hooks personalizados (ex: use-mobile)
-│   │   ├── lib/            # Logica central (soapLogic.ts, utils)
-│   │   ├── pages/          # Paginas da aplicacao
+│   │   ├── lib/            # Lógica central (soapLogic.ts, utils)
+│   │   ├── pages/          # Páginas da aplicação
 │   │   └── App.tsx         # Ponto de entrada do React
 │   └── index.html
 │
-├── server/                 # Aplicacao Backend (Express)
+├── server/                 # Aplicação Backend (Express)
 │   ├── index.ts            # Ponto de entrada do servidor
-│   ├── routes.ts           # Definicao de rotas da API
+│   ├── routes.ts           # Definição de rotas da API
 │   └── storage.ts          # Interface de armazenamento de dados
 │
-├── shared/                 # Codigo compartilhado (Tipos e Schemas do Drizzle)
+├── shared/                 # Código compartilhado (Tipos e Schemas do Drizzle)
 │   └── schema.ts
 │
 ├── script/                 # Scripts de utilidade (Build)
-└── drizzle.config.ts       # Configuracao do ORM
+└── drizzle.config.ts       # Configuração do ORM
 ````
 
-## Pre-requisitos
+## Pré-requisitos
 
-Antes de comecar, certifique-se de ter instalado em sua maquina:
+Antes de começar, certifique-se de ter instalado em sua máquina:
 
-  - Node.js (Versao 18 ou superior recomendada)
+  - Node.js (Versão 18 ou superior recomendada)
   - NPM ou Yarn
 
-## Instalacao e Execucao
+## Instalação e Execução
 
-1.  **Clone o repositorio:**
+1.  **Clone o repositório:**
 
     ```bash
     git clone [https://github.com/seu-usuario/calculadora-saponificacao.git](https://github.com/seu-usuario/calculadora-saponificacao.git)
     cd calculadora-saponificacao
     ```
 
-2.  **Instale as dependencias:**
+2.  **Instale as dependências:**
 
     ```bash
     npm install
     ```
 
-3.  **Configure as variaveis de ambiente:**
-    Se necessario, configure o `DATABASE_URL` para o PostgreSQL no arquivo `.env` ou nas variaveis do sistema (para execucao local simples, o storage em memoria pode ser usado dependendo da configuracao do `storage.ts`).
+3.  **Configure as variáveis de ambiente:**
+    Se necessário, configure o `DATABASE_URL` para o PostgreSQL no arquivo `.env` ou nas variáveis do sistema (para execução local simples, o storage em memória pode ser usado dependendo da configuração do `storage.ts`).
 
 4.  **Execute em modo de desenvolvimento:**
     Este comando inicia tanto o servidor backend quanto o frontend via Vite.
@@ -134,11 +133,11 @@ Antes de comecar, certifique-se de ter instalado em sua maquina:
     npm run dev
     ```
 
-    Acesse a aplicacao em: `http://localhost:5000`
+    Acesse a aplicação em: `http://localhost:5000`
 
 ## Como Compilar (Build)
 
-Para gerar a versao de producao otimizada:
+Para gerar a versao de produção otimizada:
 
 1.  Execute o script de build:
 
@@ -146,27 +145,29 @@ Para gerar a versao de producao otimizada:
     npm run build
     ```
 
-    *Isso ira transpilar o backend e gerar o bundle estatico do frontend na pasta `dist/`.*
+    *Isso irá compilar o backend e gerar o bundle estático do frontend na pasta `dist/`.*
 
-2.  Para iniciar a versao de producao:
+2.  Para iniciar a versão de produção:
 
     ```bash
     npm start
     ```
 
-## Logica de Negocio
+##lógica-da-calculadora
 
-A logica principal encontra-se em `client/src/lib/soapLogic.ts`. O sistema utiliza programacao orientada a objetos para garantir integridade nos calculos:
+A lógica principal encontra-se em `client/src/lib/soapLogic.ts`. O sistema utiliza programação orientada a objetos para garantir integridade nos cálculos:
 
-  - **Classe Oleo:** Armazena os indices de saponificacao (SAP) para NaOH e KOH e os atributos intrinsecos do oleo.
-  - **Classe AtributosSabonete:** Define as 7 qualidades do sabao.
-  - **Calculo Ponderado:** O sistema calcula a media ponderada dos atributos baseada na porcentagem de cada oleo na receita total.
+  - **Classe Oleo:** Armazena os índices de saponificação (SAP) para NaOH e KOH e os atributos intrínsecos do óleo.
+  - **Classe AtributosSabonete:** Define as 7 qualidades do sabão.
+  - **Cálculo Ponderado:** O sistema calcula a média ponderada dos atributos baseada na porcentagem de cada óleo na receita total.
   - **Algoritmo de Cor (Cor\_Oleo\_Atributo):**
       - **Verde (10):** Valor Ideal.
       - **Amarelo (5-9 ou 11-15):** Aceitavel.
-      - **Vermelho (\<5 ou \>15):** Fora do ideal/atencao necessaria.
+      - **Vermelho (\<5 ou \>15):** Fora do ideal/atenção necessária.
 
 <!-- end list -->
 
 ```
 ```
+
+
