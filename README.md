@@ -165,7 +165,6 @@ A lógica principal encontra-se em `client/src/lib/soapLogic.ts`. O sistema util
       - **Amarelo (5-9 ou 11-15):** Aceitavel.
       - **Vermelho (\<5 ou \>15):** Fora do ideal/atenção necessária.
 
-<!-- end list -->
 
 ```
 ```
